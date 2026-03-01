@@ -1,0 +1,37 @@
+substitutions:
+  name: CHANGE-ME
+  friendly_name: CHANGE-ME
+
+esphome:
+  name: ${name}
+  friendly_name: ${friendly_name}
+
+esp32:
+  board: esp32dev  ##se schimba daca este necesar
+  framework:
+    type: esp-idf  ##se schimba daca este necesar
+
+logger:
+  level: WARN
+
+api:
+  encryption:
+    key: "CHANGE-ME"
+  reboot_timeout: 0s
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  use_address: 0.0.0.0  ##se schimba cu acelasi ip de mai jos de la static_ip
+  power_save_mode: none
+  fast_connect: on
+  manual_ip:
+    static_ip: 0.0.0.0  ##se schimba cu un ip din reteaua ta
+    gateway: 0.0.0.0  ##se schimba cu gateway-ului tau
+    subnet: 255.255.255.0  ##se schimba daca este necesar
+    dns1: 1.1.1.1  ##se schimba daca doresti alt dns
+
+ota:
+  platform: esphome
+  password: !secret ota_password
+############################### end initial setup ###############################
